@@ -14,9 +14,12 @@ namespace Fase2
     {
         static void Main(string[] args)
         {
-            Stopwatch tiempoTotalDePrograma = Stopwatch.StartNew();
             // Dirección donde se encuentran todos los archivos HTML
-            var path = @"C:\Users\TI Dev\Documents\Visual Studio 2019\Repos\Simon\archivos html";
+            Console.WriteLine("Introduce la ruta donde se encuentran los archivos HTML:");
+            var path = Console.ReadLine();
+
+
+            Stopwatch tiempoTotalDePrograma = Stopwatch.StartNew();
 
             //Tiempo total en abrir archivos
             double tiempoTotalAperturaArchivos = 0;
@@ -79,9 +82,9 @@ namespace Fase2
                         }
                         else
                         {
-                            if (charsContenido[index].Equals('>')) //Se valida si esta cerrando tag
+                            if(aperturaTag != null) // Se valida si ya había un tag abierto
                             {
-                                if(aperturaTag != null) // Se valida si ya había un tag abierto
+                                if (charsContenido[index].Equals('>')) //Se valida si esta cerrando tag
                                 {
                                     cierreTag = index; // De ser así, entonces se sabe que se tiene ya un tag HTML
                                     for(int index2 = aperturaTag.Value;index2 <= cierreTag; index2++) // Se procede a "eliminar" todos los chars 
